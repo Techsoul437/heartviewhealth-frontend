@@ -1,0 +1,12 @@
+{
+  "welcome": "Welcome User!",
+  "health_overview": "Here's your health overview",
+  "Heart_Risk_Status": "Heart Risk Status",
+  "Low_Risk":"Low Risk",
+  "Risk_Status_Decs":"Your heart health is looking good. keep up the health habits!",
+  "bloodPressure": "Blood Pressure",
+  "sugar": "Sugar",
+  "heartRate": "Heart Rate",
+  "addHealthData": "Add Health Data",
+  "scanLabReport": "Scan Lab Report"
+}

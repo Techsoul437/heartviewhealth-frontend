@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/ThemeContext';
 import { FONTS } from '../../constants/Fonts';
@@ -19,6 +19,50 @@ import { useNavigation } from '@react-navigation/native';
 const Login = () => {
   const { theme } = useTheme();
   const navigation = useNavigation();
+  const [value, setValue] = useState('');
+  const [error, setError] = useState('');
+
+  const loginContinue = () => {
+    if (!value.trim()) {
+      setError('Phone number or email is required');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (value.includes('@')) {
+      if (!emailRegex.test(value)) {
+        setError('Please enter a valid email address');
+        return;
+      }
+
+      // ✅ API call (email)
+      console.log('API PARAM:', {
+        type: 'email',
+        value: value,
+      });
+    }
+    // 👉 Phone case
+    else {
+      if (!phoneRegex.test(value)) {
+        setError('Please enter a valid 10 digit mobile number');
+        return;
+      }
+
+      // ✅ API call (phone)
+      console.log('API PARAM:', {
+        type: 'phone',
+        value: value,
+      });
+    }
+
+    setError('');
+
+    // 🔥 Navigate or call OTP API
+    navigation.replace('Main');
+  };
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -57,18 +101,24 @@ const Login = () => {
                   Verify your phone number to create an account
                 </Text>
                 <CommonTextInput
-                  label="Phone Number/Email Id"
-                  placeholder="Enter your Phone Number/Email Id"
-                  // value={email}
-                  // onChangeText={setEmail}
+                  label="Phone Number / Email"
+                  placeholder="Enter your Phone Number / Email"
+                  value={value}
+                  onChangeText={text => {
+                    setValue(text);
+                    setError('');
+                  }}
+                  error={error}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
                 />
 
                 <GradientButton
                   title="Verify & Continue"
-                  onPress={() => navigation.replace('Main')}
-                  style={{ marginBottom: 12 }}
+                  onPress={loginContinue}
+                  style={{ marginBottom: RFValue(12) }}
                 />
-                <TouchableOpacity onPress={()=>navigation.replace('SignUp')}>
+                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                   <Text style={[styles.signup, { color: COLORS.darkGray }]}>
                     Don’t have an account?{' '}
                     <Text style={[styles.signup, { color: COLORS.lightGreen }]}>
@@ -77,7 +127,7 @@ const Login = () => {
                   </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity style={{ marginBottom: 10 }}>
                   <Text style={[styles.signup, { color: COLORS.darkGray }]}>
                     By continuing, you agree to HeartView's{' '}
                     <Text style={[styles.signup, { color: COLORS.lightGreen }]}>
@@ -130,12 +180,12 @@ const styles = StyleSheet.create({
     borderTopStartRadius: RFValue(35),
     borderTopEndRadius: RFValue(35),
     paddingTop: RFValue(16),
-    paddingHorizontal: RFValue(30),
+    paddingHorizontal: RFValue(20),
   },
   loginText: {
     fontFamily: FONTS.BOLD,
     fontSize: RFValue(20),
-    marginBottom: RFValue(22),
+    marginBottom: RFValue(12),
   },
   loginNote: {
     fontFamily: FONTS.REGULAR,
@@ -145,7 +195,7 @@ const styles = StyleSheet.create({
   signup: {
     fontFamily: FONTS.REGULAR,
     fontSize: RFValue(12),
-    marginBottom: RFValue(12),
+    marginBottom: RFValue(8),
     textAlign: 'center',
   },
 });

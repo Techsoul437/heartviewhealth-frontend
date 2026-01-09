@@ -4,8 +4,9 @@ import { OtpInput } from 'react-native-otp-entry';
 import { FONTS } from '../constants/Fonts';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from '../theme/ThemeContext';
+import { COLORS } from '../constants/Colour';
 
-const CommonOtpInput = ({ label = 'Enter OTP', digits = 6, onChange }) => {
+const CommonOtpInput = ({ label = 'Enter OTP', digits = 6, onChange,error = '' }) => {
   const { theme } = useTheme();
   return (
     <View style={styles.otpWrapper}>
@@ -24,10 +25,11 @@ const CommonOtpInput = ({ label = 'Enter OTP', digits = 6, onChange }) => {
           pinCodeTextStyle: [styles.pinCodeText,{color:theme.text}],
           focusedPinCodeContainerStyle: [
             styles.focusedPin,
-            { borderColor: '#15615D' },
+            { borderColor: COLORS.cyanGreen },
           ],
         }}
       />
+      {error ? <Text style={[styles.errorText,{color: COLORS.softRed,}]}>{error}</Text> : null}
     </View>
   );
 };
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
   otpLabel: {
     fontSize: RFValue(12),
     fontFamily: FONTS.MEDIUM,
-    marginBottom: 12,
+    marginBottom: RFValue(10),
   },
   otpContainer: {
     justifyContent: 'space-between',
@@ -53,6 +55,11 @@ const styles = StyleSheet.create({
   pinCodeText: {
     fontSize: RFValue(18),
     fontFamily:FONTS.MEDIUM
+  },
+  errorText: {
+    marginTop: RFValue(4),
+    fontSize: RFValue(10),
+    fontFamily: FONTS.REGULAR,
   },
 });
 

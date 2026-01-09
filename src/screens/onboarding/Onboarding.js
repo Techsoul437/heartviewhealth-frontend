@@ -88,9 +88,9 @@ const Onboarding = () => {
           </View>
 
           <GradientButton
-            title="GETSTART"
+            title="GET START"
             onPress={() => navigation.replace('Login')}
-            
+            // style={{marginBottom:RFValue()}}
           />
         </View>
       </View>
@@ -116,23 +116,24 @@ const styles = StyleSheet.create({
   },
 
   shadowWrapper: {
-    borderRadius: 16,
+    // borderRadius: 35,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     shadowRadius: 5,
     elevation: 3,
     marginTop: RFValue(20),
+    marginHorizontal:25
   },
 
   innerContainer: {
     borderRadius: RFValue(35),
     paddingTop: RFValue(16),
-    paddingHorizontal: RFValue(30),
+    paddingHorizontal: RFValue(20),
   },
 
   text: {
     fontFamily: FONTS.REGULAR,
-    fontSize: RFValue(16),
+    fontSize: RFValue(14),
     marginBottom: RFValue(6),
     flexShrink: 1,
   },

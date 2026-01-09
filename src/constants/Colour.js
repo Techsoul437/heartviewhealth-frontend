@@ -6,5 +6,9 @@ export const COLORS = {
   darkBlue:'#0E4159FF',
   darkGreen:'#2B8274FF',
   lightGreen:'#1FA6A0FF',
-  darkGray:'#9095A0FF'
+  darkGray:'#9095A0FF',
+  cyanGreen:'#15615D',
+  softRed:'#E53935',
+  brightGreen:'#0DBF6FFF',
+  softGreen:'#3EC78AFF'
 };

@@ -1,0 +1,12 @@
+{
+  "welcome": "स्वागत है!",
+  "health_overview": "यह आपका स्वास्थ्य अवलोकन है",
+  "Heart_Risk_Status": "हृदय जोखिम स्तर",
+  "Low_Risk":"कम जोखिम",
+  "Risk_Status_Decs":"आपका हृदय स्वास्थ्य अच्छा दिख रहा है। स्वस्थ आदतें बनाए रखें!",
+  "bloodPressure": "रक्तचाप",
+  "sugar": "शुगर",
+  "heartRate": "हृदय गति",
+  "addHealthData": "स्वास्थ्य डेटा जोड़ें",
+  "scanLabReport": "लैब रिपोर्ट स्कैन करें"
+}

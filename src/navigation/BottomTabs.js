@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/Home';
+import HomeScreen from '../screens/Home/HomeScreen'
 import Health from '../screens/Health';
 import Reminders from '../screens/Reminders';
 import Eco from '../screens/Eco';
@@ -29,8 +29,8 @@ const BottomTabs = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeScreen"
+        component={HomeScreen}
         options={{
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,

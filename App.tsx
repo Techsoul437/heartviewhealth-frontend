@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import RootNavigator from './src/navigation/RootNavigator';
 import { ThemeProvider, useTheme } from './src/theme/ThemeContext';
+import { LanguageProvider } from './src/constants/LanguageContext'
 
 const AppContent = () => {
   const { theme } = useTheme();
@@ -24,7 +25,9 @@ const AppContent = () => {
 const App = () => {
   return (
     <ThemeProvider>
-      <AppContent />
+      <LanguageProvider> 
+        <AppContent />
+      </LanguageProvider>
     </ThemeProvider>
   );
 };

@@ -10,12 +10,12 @@ const SplashScreen = () => {
   const navigation = useNavigation();
 
   return (
-    // <View style={styles.container}>
+    <View style={styles.container}>
       <Video
         source={require('../assets/video/SplashVideo.mp4')}
         style={styles.video}
-        resizeMode="cover"
-        muted={true}
+        resizeMode='contain'
+        muted={false}
         ignoreSilentSwitch="ignore"
         repeat={false}
         controls={false}
@@ -31,7 +31,7 @@ const SplashScreen = () => {
           navigation.replace('Onboarding');
         }}
       />
-    // </View>
+     </View>
   );
 };
 
