@@ -20,9 +20,11 @@ import ImagesPath from '../../constants/ImagesPath';
 import { LanguageContext } from '../../constants/LanguageContext';
 import i18n from '../../assets/i18n';
 import { FONTS } from '../../constants/Fonts';
-import HealthLineChart from './HealthLineChart'
+import HealthLineChart from './HealthLineChart';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const { theme } = useTheme();
   const { width } = Dimensions.get('window');
   useContext(LanguageContext);
@@ -30,61 +32,74 @@ const HomeScreen = () => {
     <SafeAreaView
       style={[styles.container, { backgroundColor: theme.background }]}
     >
-      <CommonHeader />
+      <CommonHeader
+        title={i18n.t('welcome')}
+        subTitle={i18n.t('health_overview')}
+      />
       <ScrollView showsVerticalScrollIndicator={false}>
-      <RiskCard />
-      <HealthCard />
-      <View style={styles.addReportContainer}>
-        <TouchableOpacity>
-          <View
-            style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
+        <RiskCard />
+        <HealthCard />
+        <View style={styles.addReportContainer}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('HealthScreen', {
+                screen: 'AddHealthData',
+              })
+            }
           >
             <View
-              style={[
-                styles.innerContainer,
-                {
-                  backgroundColor: theme.innerBackground,
-                  borderColor: theme.inputBorder,
-                  width:width/2.3,
-                },
-              ]}
+              style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
             >
-              <Image
-                source={ImagesPath.plus}
-                style={[styles.plusIcon, { tintColor: theme.text }]}
-              />
-              <Text style={[styles.addHealth, { color: theme.text }]}>
-                {i18n.t('addHealthData')}
-              </Text>
+              <View
+                style={[
+                  styles.innerContainer,
+                  {
+                    backgroundColor: theme.innerBackground,
+                    borderColor: theme.inputBorder,
+                    width: width / 2.3,
+                  },
+                ]}
+              >
+                <Image
+                  source={ImagesPath.plus}
+                  style={[styles.plusIcon, { tintColor: theme.text }]}
+                />
+                <Text style={[styles.addHealth, { color: theme.text }]}>
+                  {i18n.t('addHealthData')}
+                </Text>
+              </View>
             </View>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <View
-            style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
-          >
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() =>
+              navigation.navigate('HealthScreen', {
+                screen: 'UploadScreen',
+              })
+            }>
             <View
-              style={[
-                styles.innerContainer,
-                {
-                  backgroundColor: theme.innerBackground,
-                  borderColor: theme.inputBorder,
-                  width:width/2.3,
-                },
-              ]}
+              style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
             >
-              <Image
-                source={ImagesPath.document}
-                style={[styles.plusIcon, { tintColor: theme.text }]}
-              />
-              <Text style={[styles.addHealth, { color: theme.text }]}>
-                {i18n.t('scanLabReport')}
-              </Text>
+              <View
+                style={[
+                  styles.innerContainer,
+                  {
+                    backgroundColor: theme.innerBackground,
+                    borderColor: theme.inputBorder,
+                    width: width / 2.3,
+                  },
+                ]}
+              >
+                <Image
+                  source={ImagesPath.document}
+                  style={[styles.plusIcon, { tintColor: theme.text }]}
+                />
+                <Text style={[styles.addHealth, { color: theme.text }]}>
+                  {i18n.t('scanLabReport')}
+                </Text>
+              </View>
             </View>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <HealthLineChart/>
+          </TouchableOpacity>
+        </View>
+        <HealthLineChart />
       </ScrollView>
     </SafeAreaView>
   );
@@ -117,11 +132,11 @@ const styles = StyleSheet.create({
     borderRadius: RFValue(10),
     paddingVertical: RFValue(10),
     // paddingHorizontal: RFValue(8),
-    
+
     flexDirection: 'row',
     gap: RFValue(5),
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     borderWidth: 1,
   },
   plusIcon: {

@@ -19,6 +19,11 @@ export default {
   drop:require('../assets/icon/drop.png'),
   plus:require('../assets/icon/plus.png'),
   document:require('../assets/icon/document.png'),
+  location:require('../assets/icon/location.png'),
+  gallery:require('../assets/icon/gallery.png'),
+  lock:require('../assets/icon/lock.png'),
+  upload:require('../assets/icon/upload.png'),
+  correct:require('../assets/icon/correct.png'),
   //Images
   logo: require('../assets/image/logo.png'),
 

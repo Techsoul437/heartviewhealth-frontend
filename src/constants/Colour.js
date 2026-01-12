@@ -10,5 +10,10 @@ export const COLORS = {
   cyanGreen:'#15615D',
   softRed:'#E53935',
   brightGreen:'#0DBF6FFF',
-  softGreen:'#3EC78AFF'
+  softGreen:'#3EC78AFF',
+  green:'#0ECE77',
+  blue:'#0E1013',
+  darkBlue:'#0E151D',
+  softGray:'#9CA3AE',
+  cyanGray:'#9298A2'
 };

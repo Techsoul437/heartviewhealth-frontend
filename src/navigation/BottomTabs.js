@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home/HomeScreen'
-import Health from '../screens/Health';
+import UploadScreen from '../screens/health/UploadScreen';
 import Reminders from '../screens/Reminders';
 import Eco from '../screens/Eco';
 import Setting from '../screens/Setting';
@@ -11,9 +11,29 @@ import { FONTS } from '../constants/Fonts';
 import { RFValue } from 'react-native-responsive-fontsize';
 import ImagesPath from '../constants/ImagesPath';
 import { useTheme } from '../theme/ThemeContext';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AddHealthData from '../screens/health/AddHealthData'
 
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function HealthTab() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="UploadScreen"
+        component={UploadScreen}
+        options={{ headerShown: false }}
+      />
+       <Stack.Screen
+        name="AddHealthData"
+        component={AddHealthData}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 const BottomTabs = () => {
   const { theme } = useTheme();
@@ -51,8 +71,8 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Health"
-        component={Health}
+        name="HealthScreen"
+        component={HealthTab}
         options={{
           tabBarLabel: 'Health',
           tabBarActiveTintColor: COLORS.primary,

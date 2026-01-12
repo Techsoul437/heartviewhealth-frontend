@@ -8,5 +8,20 @@
   "sugar": "Sugar",
   "heartRate": "Heart Rate",
   "addHealthData": "Add Health Data",
-  "scanLabReport": "Scan Lab Report"
+  "scanLabReport": "Scan Lab Report",
+  "scan_Report":"Scan Report",
+  "scan_Report_Desc":"Upload and extract Blood Sugar data",
+  "Upload_Report":"Upload Report",
+  "uploadnote":"Tap to upload image or PDF",
+  "uploadnote2":"Supports JPG, PNG, PDF",
+  "Add_Health_Data":"Add Health Data",
+  "add_Helth_Desc":"Manually add and manage your health records",
+  "provideHealthDetails": "Provide Health Details",
+  "bloodSugarLevel": "Blood Sugar Level",
+  "bloodPressureLevel": "Blood Pressure Level",
+  "testDate": "Test Date",
+  "labName": "Lab Name",
+  "enterLabName": "Enter Lab Name",
+  "confirmAndSave": "Confirm & Save",
+  "cancel": "Cancel"
 }

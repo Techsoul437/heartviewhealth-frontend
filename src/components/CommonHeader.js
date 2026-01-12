@@ -14,7 +14,7 @@ import ImagesPath from '../constants/ImagesPath';
 import { LanguageContext } from '../constants/LanguageContext';
 import i18n from '../assets/i18n';
 
-const CommonHeader = () => {
+const CommonHeader = ({title,subTitle}) => {
   const { theme } = useTheme();
   useContext(LanguageContext);
   
@@ -23,10 +23,10 @@ const CommonHeader = () => {
       
       <View>
         <Text style={[styles.welcome, { color: theme.text }]}>
-          {i18n.t('welcome')}
+            {title}
         </Text>
         <Text style={[styles.headerDesc, { color: theme.text }]}>
-          {i18n.t('health_overview')}
+           {subTitle}
         </Text>
       </View>
 

@@ -8,13 +8,14 @@ import SignUp from '../screens/auth/SignUp';
 import Profile from '../screens/auth/Profile';
 import HealthProfile from '../screens/auth/HealthProfile'
 import FamilyDetails from '../screens/auth/FamilyDetails'
+import permissions from '../screens/auth/permissions'
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="permissions"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -24,6 +25,7 @@ const RootNavigator = () => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="HealthProfile" component={HealthProfile} />
       <Stack.Screen name="FamilyDetails" component={FamilyDetails} />
+      <Stack.Screen name="permissions" component={permissions} />
       <Stack.Screen name="Main" component={BottomTabs} />
     </Stack.Navigator>
   );

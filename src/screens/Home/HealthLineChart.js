@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Platform } from 'react-native';
 import { LineChart } from 'react-native-gifted-charts';
 import { useTheme } from '../../theme/ThemeContext';
 import { RFValue } from 'react-native-responsive-fontsize';
@@ -21,7 +21,6 @@ const HealthLineChart = () => {
     { value: 120, label: 'Sun' },
   ];
 
-  
   const bloodPressureData = [
     { value: 118, label: 'Mon' },
     { value: 122, label: 'Tue' },
@@ -54,7 +53,7 @@ const HealthLineChart = () => {
           <LineChart
             data={bloodPressureData}
             height={200}
-            width={210}
+            width={Platform.OS == 'ios' ? 260 : 240}
             spacing={45}
             thickness={3}
             color="#11A8A0"
@@ -74,11 +73,11 @@ const HealthLineChart = () => {
             startOpacity={0.3}
             endOpacity={0.05}
             isAnimated
-            animationDuration={1200} 
-            animateOnDataChange 
+            animationDuration={1200}
+            animateOnDataChange
             animationEasing="easeOut"
-            yAxisOffset={0} 
-            initialSpacing={15} 
+            yAxisOffset={0}
+            initialSpacing={15}
             xAxisThickness={1}
             yAxisThickness={1}
             xAxisColor="#D0D0D0"
@@ -122,7 +121,7 @@ const HealthLineChart = () => {
           <LineChart
             data={bloodSugarData}
             height={200}
-            width={210}
+           width={Platform.OS == 'ios' ? 260 : 240}
             spacing={45}
             thickness={3}
             color="#F5A43E"
@@ -142,12 +141,11 @@ const HealthLineChart = () => {
             startOpacity={0.3}
             endOpacity={0.05}
             isAnimated
-            animationDuration={1200} 
-            animateOnDataChange 
+            animationDuration={1200}
+            animateOnDataChange
             animationEasing="easeOut"
-            
-            yAxisOffset={0} 
-            initialSpacing={15} 
+            yAxisOffset={0}
+            initialSpacing={15}
             xAxisThickness={1}
             yAxisThickness={1}
             xAxisColor="#D0D0D0"

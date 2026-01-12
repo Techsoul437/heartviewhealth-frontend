@@ -486,20 +486,20 @@ const FamilyDetails = () => {
                   onPress={() => {
                     if (validateMembers()) {
                       console.log('Family Members:', members);
-                      navigation.replace('Main'); 
+                      navigation.replace('Main');
                     }
                   }}
                   style={{ marginBottom: RFValue(12) }}
                 />
 
                 <TouchableOpacity style={{ marginBottom: 10 }}>
-                                  <Text style={[styles.signup, { color: COLORS.darkGray }]}>
-                                    By continuing, you agree to HeartView's{' '}
-                                    <Text style={[styles.signup, { color: COLORS.lightGreen }]}>
-                                      Terms Privacy Policy
-                                    </Text>{' '}
-                                  </Text>
-                                </TouchableOpacity>
+                  <Text style={[styles.signup, { color: COLORS.darkGray }]}>
+                    By continuing, you agree to HeartView's{' '}
+                    <Text style={[styles.signup, { color: COLORS.lightGreen }]}>
+                      Terms Privacy Policy
+                    </Text>{' '}
+                  </Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
