@@ -21,157 +21,179 @@ import CommonTextInput from '../../components/CommonTextInput';
 import CommonDatePickerInput from '../../components/CommonDatePickerInput';
 import CommonButton from '../../components/CommonButton';
 import ImagesPath from '../../constants/ImagesPath';
+import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('window');
 
 const AddHealthData = ({ route }) => {
+  const navigation = useNavigation();
   const { theme } = useTheme();
-  const { params } = route?.params ?? {};
-  console.log('params', params);
-  
+  const { healthData } = route?.params || {};
 
   useContext(LanguageContext);
   const [sugar, setSugar] = useState('');
   const [bloodPressure, setBloodPressure] = useState('');
   const [date, setDate] = useState(null);
-  const [labName,setLabName] = useState('')
+  const [labName, setLabName] = useState('');
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: theme.background }]}
     >
-      <CommonHeader
-        title={params?i18n.t('scan_Report'):i18n.t('Add_Health_Data')}
-        subTitle={params?i18n.t('scan_Report_Desc'):i18n.t('add_Helth_Desc')}
-      />
+      <TouchableOpacity
+        style={styles.header}
+        onPress={() => navigation.goBack()}
+      >
+        <Image
+          source={ImagesPath.leftArrow}
+          style={[styles.leftIcon, { tintColor: theme.text }]}
+        />
+        <CommonHeader
+          title={healthData ? i18n.t('scan_Report') : i18n.t('Add_Health_Data')}
+          subTitle={
+            healthData ? i18n.t('scan_Report_Desc') : i18n.t('add_Helth_Desc')
+          }
+        />
+      </TouchableOpacity>
+
       <KeyboardAvoidingView
-            style={{ flex: 1 }}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {healthData && (
+            <TouchableOpacity>
+              <View
+                style={[
+                  styles.shadowDocument,
+                  { shadowColor: theme.shadowColor },
+                ]}
+              >
+                <View
+                  style={[
+                    styles.documentContainer,
+                    {
+                      backgroundColor: theme.innerBackground,
+                      borderColor: theme.inputBorder,
+                    },
+                  ]}
+                >
+                  <View style={styles.innerDocument}>
+                    <View
+                      style={[
+                        styles.perimssionContainer,
+                        {
+                          backgroundColor: COLORS.lightGreen.slice(0, 7) + '20',
+                        },
+                      ]}
+                    >
+                      <Image
+                        source={ImagesPath.document}
+                        style={[
+                          styles.permssionIcon,
+                          { tintColor: COLORS.lightGreen },
+                        ]}
+                      />
+                    </View>
+                    <View>
+                      <Text
+                        style={[styles.documentName, { color: theme.text }]}
+                      >
+                        Phone Verification.png
+                      </Text>
+                      <Text
+                        style={[
+                          styles.documentSize,
+                          { color: COLORS.cyanGray },
+                        ]}
+                      >
+                        96.3 KB
+                      </Text>
+                    </View>
+                  </View>
+                  <Image source={ImagesPath.correct} style={styles.correct} />
+                </View>
+              </View>
+            </TouchableOpacity>
+          )}
+
+          <View
+            style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
           >
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {params && (
-          <TouchableOpacity>
             <View
               style={[
-                styles.shadowDocument,
-                { shadowColor: theme.shadowColor },
+                styles.innerContainer,
+                {
+                  backgroundColor: theme.innerBackground,
+                  borderColor: theme.inputBorder,
+                },
               ]}
             >
+              <Text style={[styles.heading, { color: theme.text }]}>
+                {i18n.t('provideHealthDetails')}
+              </Text>
+              <CommonTextInput
+                label={i18n.t('bloodSugarLevel')}
+                placeholder="ex. 95"
+                value={sugar}
+                onChangeText={text => {
+                  setSugar(text);
+                }}
+              />
+              <CommonTextInput
+                label={i18n.t('bloodPressureLevel')}
+                placeholder="ex. 85"
+                value={bloodPressure}
+                onChangeText={text => {
+                  setBloodPressure(text);
+                }}
+              />
+              <CommonDatePickerInput
+                label={i18n.t('testDate')}
+                placeholder={i18n.t('testDate')}
+                value={date}
+                onChange={date => {
+                  setDate(date);
+                }}
+              />
+              <CommonTextInput
+                label={i18n.t('labName')}
+                placeholder={i18n.t('enterLabName')}
+                value={labName}
+                onChangeText={text => {
+                  setLabName(text);
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.button}>
+            <TouchableOpacity>
               <View
                 style={[
-                  styles.documentContainer,
-                  {
-                    backgroundColor: theme.innerBackground,
-                    borderColor: theme.inputBorder,
-                  },
+                  styles.shadowButton,
+                  { shadowColor: theme.shadowColor },
                 ]}
               >
-                <View style={styles.innerDocument}>
-                  <View
-                    style={[
-                      styles.perimssionContainer,
-                      { backgroundColor: COLORS.lightGreen.slice(0, 7) + '20' },
-                    ]}
-                  >
-                    <Image
-                      source={ImagesPath.document}
-                      style={[
-                        styles.permssionIcon,
-                        { tintColor: COLORS.lightGreen },
-                      ]}
-                    />
-                  </View>
-                  <View>
-                    <Text style={[styles.documentName, { color: theme.text }]}>
-                      Phone Verification.png
-                    </Text>
-                    <Text
-                      style={[styles.documentSize, { color: COLORS.cyanGray }]}
-                    >
-                      96.3 KB
-                    </Text>
-                  </View>
+                <View
+                  style={[
+                    styles.Button,
+                    {
+                      backgroundColor: theme.innerBackground,
+                      borderColor: theme.inputBorder,
+                      width: width / 2.3,
+                    },
+                  ]}
+                >
+                  <Text style={[styles.cancel, { color: theme.text }]}>
+                    {i18n.t('cancel')}
+                  </Text>
                 </View>
-                <Image source={ImagesPath.correct} style={styles.correct} />
               </View>
-            </View>
-          </TouchableOpacity>
-        )}
-
-        <View
-          style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
-        >
-          <View
-            style={[
-              styles.innerContainer,
-              {
-                backgroundColor: theme.innerBackground,
-                borderColor: theme.inputBorder,
-              },
-            ]}
-          >
-            <Text style={[styles.heading, { color: theme.text }]}>
-              {i18n.t('provideHealthDetails')}
-            </Text>
-            <CommonTextInput
-              label={i18n.t('bloodSugarLevel')}
-              placeholder="ex. 95"
-              value={sugar}
-              onChangeText={text => {
-                setSugar(text);
-              }}
-            />
-            <CommonTextInput
-              label={i18n.t('bloodPressureLevel')}
-              placeholder="ex. 85"
-              value={bloodPressure}
-              onChangeText={text => {
-                setBloodPressure(text);
-              }}
-            />
-            <CommonDatePickerInput
-              label={i18n.t('testDate')}
-              placeholder={i18n.t('testDate')}
-              value={date}
-              onChange={date => {
-                setDate(date);
-              }}
-            />
-            <CommonTextInput
-              label={i18n.t('labName')}
-              placeholder={i18n.t('enterLabName')}
-              value={labName}
-              onChangeText={text => {
-                setLabName(text);
-              }}
+            </TouchableOpacity>
+            <CommonButton
+              label={i18n.t('confirmAndSave')}
+              btnStyles={{ width: width / 2.3 }}
             />
           </View>
-        </View>
-        <View style={styles.button}>
-          <TouchableOpacity>
-            <View
-              style={[styles.shadowButton, { shadowColor: theme.shadowColor }]}
-            >
-              <View
-                style={[
-                  styles.Button,
-                  {
-                    backgroundColor: theme.innerBackground,
-                    borderColor: theme.inputBorder,
-                    width: width / 2.3,
-                  },
-                ]}
-              >
-                <Text style={[styles.cancel, { color: theme.text }]}>
-                  {i18n.t('cancel')}
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <CommonButton
-            label={i18n.t('confirmAndSave')}
-            btnStyles={{ width: width / 2.3 }}
-          />
-        </View>
-      </ScrollView>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -201,7 +223,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: RFValue(12),
     borderWidth: 1,
 
-    gap: RFValue(10),
+    // gap: RFValue(10),
     // justifyContent:'center'
   },
   heading: {
@@ -283,6 +305,16 @@ const styles = StyleSheet.create({
     fontSize: RFValue(11),
   },
   correct: {
+    height: RFValue(20),
+    width: RFValue(20),
+    resizeMode: 'contain',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: RFValue(10),
+  },
+  leftIcon: {
     height: RFValue(20),
     width: RFValue(20),
     resizeMode: 'contain',

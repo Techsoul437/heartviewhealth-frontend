@@ -42,9 +42,7 @@ const HomeScreen = () => {
         <View style={styles.addReportContainer}>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('HealthScreen', {
-                screen: 'AddHealthData',
-              })
+              navigation.navigate('AddHealthData')
             }
           >
             <View
@@ -71,9 +69,7 @@ const HomeScreen = () => {
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-              navigation.navigate('HealthScreen', {
-                screen: 'UploadScreen',
-              })
+              navigation.navigate('UploadScreen')
             }>
             <View
               style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}

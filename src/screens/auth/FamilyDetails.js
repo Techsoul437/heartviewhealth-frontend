@@ -350,7 +350,7 @@ const FamilyDetails = () => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={{ flexGrow: 1 ,marginBottom:50}}
         >
           <View style={{ flex: 1 }}>
             <View
@@ -486,20 +486,20 @@ const FamilyDetails = () => {
                   onPress={() => {
                     if (validateMembers()) {
                       console.log('Family Members:', members);
-                      navigation.replace('Main');
+                      navigation.replace('Permissions');
                     }
                   }}
                   style={{ marginBottom: RFValue(12) }}
                 />
 
-                <TouchableOpacity style={{ marginBottom: 10 }}>
+                {/* <TouchableOpacity style={{ marginBottom: 10 }}>
                   <Text style={[styles.signup, { color: COLORS.darkGray }]}>
                     By continuing, you agree to HeartView's{' '}
                     <Text style={[styles.signup, { color: COLORS.lightGreen }]}>
                       Terms Privacy Policy
                     </Text>{' '}
                   </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>

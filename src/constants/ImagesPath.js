@@ -24,8 +24,17 @@ export default {
   lock:require('../assets/icon/lock.png'),
   upload:require('../assets/icon/upload.png'),
   correct:require('../assets/icon/correct.png'),
+  rightArrow:require('../assets/icon/rightArrow.png'),
+  chartDown:require('../assets/icon/chartDown.png'),
+  chartUp:require('../assets/icon/chartUp.png'),
+  horizontalLine:require('../assets/icon/horizontalLine.png'),
+  lab:require('../assets/icon/lab.png'),
+  stethoscope:require('../assets/icon/stethoscope.png'),
+  clock:require('../assets/icon/clock.png'),
   //Images
   logo: require('../assets/image/logo.png'),
+  reminder: require('../assets/image/reminder.png'),
+
 
   //Videos
   splashVideo: require('../assets/video/SplashVideo.mp4'),

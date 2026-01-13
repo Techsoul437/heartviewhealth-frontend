@@ -6,16 +6,22 @@ import Login from '../screens/auth/Login';
 import SplashScreen from '../screens/SplashScreen';
 import SignUp from '../screens/auth/SignUp';
 import Profile from '../screens/auth/Profile';
-import HealthProfile from '../screens/auth/HealthProfile'
-import FamilyDetails from '../screens/auth/FamilyDetails'
-import permissions from '../screens/auth/permissions'
+import HealthProfile from '../screens/auth/HealthProfile';
+import FamilyDetails from '../screens/auth/FamilyDetails';
+import Permissions from '../screens/auth/Permissions';
+import AddHealthData from '../screens/health/AddHealthData';
+import UploadScreen from '../screens/health/UploadScreen';
+import HealthDetail from '../screens/health/HealthDetail';
+import AddMedication from '../screens/reminders/AddMedication'
+import AddLabsAppointment from '../screens/reminders/AddLabsAppointment'
+import AddDoctorAppointment from '../screens/reminders/AddDoctorAppointment'
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="permissions"
+      initialRouteName="Main"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -25,8 +31,14 @@ const RootNavigator = () => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="HealthProfile" component={HealthProfile} />
       <Stack.Screen name="FamilyDetails" component={FamilyDetails} />
-      <Stack.Screen name="permissions" component={permissions} />
+      <Stack.Screen name="Permissions" component={Permissions} />
       <Stack.Screen name="Main" component={BottomTabs} />
+      <Stack.Screen name="UploadScreen" component={UploadScreen} />
+      <Stack.Screen name="AddHealthData" component={AddHealthData} />
+      <Stack.Screen name="HealthDetail" component={HealthDetail} />
+      <Stack.Screen name="AddMedication" component={AddMedication} />
+      <Stack.Screen name="AddLabsAppointment" component={AddLabsAppointment} />
+      <Stack.Screen name="AddDoctorAppointment" component={AddDoctorAppointment} />
     </Stack.Navigator>
   );
 };

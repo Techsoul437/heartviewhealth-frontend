@@ -80,7 +80,7 @@ const Permisstion = () => {
     const photoGranted = await requestPhotoPermission();
 
     if (locationGranted && photoGranted) {
-      Alert.alert('Success', 'All permissions granted');
+      // Alert.alert('Success', 'All permissions granted');
       navigation.navigate('Main');
     }
   };

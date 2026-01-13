@@ -15,59 +15,34 @@ const UploadScreen = () => {
   const { theme } = useTheme();
   const navigation = useNavigation();
   useContext(LanguageContext);
-  const HealthData = [
-    {
-      name: 'Blood Sugar',
-      status: 'Stable',
-      value: '95 mg/dl',
-      statusData: 'Normal',
-    },
-    {
-      name: 'Blood Pressure',
-      status: 'Stable',
-      value: '120/80',
-      statusData: 'Normal',
-    },
-    {
-      name: 'Weight',
-      status: 'Down',
-      value: '72 kg',
-      statusData: 'Normal',
-    },
-    {
-      name: 'Cholesterol',
-      status: 'Stable',
-      value: '180 mg/dL',
-      statusData: 'Normal',
-    },
-    {
-      name: 'HbA1c',
-      status: 'Up',
-      value: '5.4%',
-      statusData: 'Normal',
-    },
-  ];
+ 
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: theme.background }]}
     >
-      <CommonHeader
-        title={i18n.t('scan_Report')}
-        subTitle={i18n.t('scan_Report_Desc')}
-      />
+      <TouchableOpacity
+        style={styles.header}
+        onPress={() => navigation.goBack()}
+      >
+        <Image
+          source={ImagesPath.leftArrow}
+          style={[styles.leftIcon, { tintColor: theme.text }]}
+        />
+        <CommonHeader
+          title={i18n.t('scan_Report')}
+          subTitle={i18n.t('scan_Report_Desc')}
+        />
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
         onPress={() =>
-          navigation.navigate('HealthScreen', {
-            screen: 'AddHealthData',
-            params: {
-              params: {
-                bloodSugar: 95,
-                bloodPressure: 85,
-                date: '2024-12-28',
-                labName: 'City Medical Lab',
-              },
+          navigation.navigate('AddHealthData', {
+            healthData: {
+              bloodSugar: 95,
+              bloodPressure: 85,
+              date: '2024-12-28',
+              labName: 'City Medical Lab',
             },
           })
         }
@@ -144,5 +119,15 @@ const styles = StyleSheet.create({
   uploadnote2: {
     fontFamily: FONTS.LIGHT,
     fontSize: RFValue(11),
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: RFValue(10),
+  },
+  leftIcon: {
+    height: RFValue(20),
+    width: RFValue(20),
+    resizeMode: 'contain',
   },
 });

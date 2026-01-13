@@ -15,5 +15,6 @@ export const COLORS = {
   blue:'#0E1013',
   darkBlue:'#0E151D',
   softGray:'#9CA3AE',
-  cyanGray:'#9298A2'
+  cyanGray:'#9298A2',
+  yellow:'#9B6B2F'
 };

@@ -81,7 +81,7 @@ const Profile = () => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={{ flexGrow: 1 ,marginBottom:50}}
         >
           <View style={{ flex: 1 }}>
             <View
@@ -168,14 +168,14 @@ const Profile = () => {
                   style={{ marginBottom: RFValue(12), marginTop: RFValue(4) }}
                 />
 
-                <TouchableOpacity style={{ marginBottom: 10 }}>
+                {/* <TouchableOpacity style={{ marginBottom: 10 }}>
                   <Text style={[styles.signup, { color: COLORS.darkGray }]}>
                     By continuing, you agree to HeartView's{' '}
                     <Text style={[styles.signup, { color: COLORS.lightGreen }]}>
                       Terms Privacy Policy
                     </Text>{' '}
                   </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>

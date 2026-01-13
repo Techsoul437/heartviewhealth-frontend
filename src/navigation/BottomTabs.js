@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/Home/HomeScreen'
-import UploadScreen from '../screens/health/UploadScreen';
-import Reminders from '../screens/Reminders';
+import HomeScreen from '../screens/Home/HomeScreen';
+import RemindersScreen from '../screens/reminders/RemindersScreen';
 import Eco from '../screens/Eco';
 import Setting from '../screens/Setting';
 import { Image, StyleSheet } from 'react-native';
@@ -11,29 +10,13 @@ import { FONTS } from '../constants/Fonts';
 import { RFValue } from 'react-native-responsive-fontsize';
 import ImagesPath from '../constants/ImagesPath';
 import { useTheme } from '../theme/ThemeContext';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AddHealthData from '../screens/health/AddHealthData'
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HealthScreen from '../screens/health/HealthScreen'
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function HealthTab() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="UploadScreen"
-        component={UploadScreen}
-        options={{ headerShown: false }}
-      />
-       <Stack.Screen
-        name="AddHealthData"
-        component={AddHealthData}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  );
-}
+
 
 const BottomTabs = () => {
   const { theme } = useTheme();
@@ -42,7 +25,7 @@ const BottomTabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: theme.background ,
+          backgroundColor: theme.background,
           borderTopWidth: RFValue(1),
           borderColor: COLORS.gray,
         },
@@ -57,7 +40,7 @@ const BottomTabs = () => {
           tabBarLabel: 'Home',
           tabBarLabelStyle: {
             fontSize: RFValue(10),
-            fontFamily:FONTS.REGULAR
+            fontFamily: FONTS.REGULAR,
           },
           tabBarIcon: ({ focused }) => (
             <Image
@@ -72,14 +55,14 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name="HealthScreen"
-        component={HealthTab}
+        component={HealthScreen}
         options={{
           tabBarLabel: 'Health',
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {
             fontSize: RFValue(10),
-            fontFamily:FONTS.REGULAR
+            fontFamily: FONTS.REGULAR,
           },
           tabBarIcon: ({ focused }) => (
             <Image
@@ -94,15 +77,15 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name="Reminders"
-        component={Reminders}
+        name="RemindersScreen"
+        component={RemindersScreen}
         options={{
           tabBarLabel: 'Reminders',
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {
             fontSize: RFValue(10),
-            fontFamily:FONTS.REGULAR
+            fontFamily: FONTS.REGULAR,
           },
           tabBarIcon: ({ focused }) => (
             <Image
@@ -116,7 +99,7 @@ const BottomTabs = () => {
         }}
       />
 
-       <Tab.Screen
+      <Tab.Screen
         name="Eco"
         component={Eco}
         options={{
@@ -125,7 +108,7 @@ const BottomTabs = () => {
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {
             fontSize: RFValue(10),
-            fontFamily:FONTS.REGULAR
+            fontFamily: FONTS.REGULAR,
           },
           tabBarIcon: ({ focused }) => (
             <Image
@@ -139,7 +122,7 @@ const BottomTabs = () => {
         }}
       />
 
-       <Tab.Screen
+      <Tab.Screen
         name="Setting"
         component={Setting}
         options={{
@@ -148,7 +131,7 @@ const BottomTabs = () => {
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {
             fontSize: RFValue(10),
-            fontFamily:FONTS.REGULAR
+            fontFamily: FONTS.REGULAR,
           },
           tabBarIcon: ({ focused }) => (
             <Image
