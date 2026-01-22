@@ -15,6 +15,9 @@ import HealthDetail from '../screens/health/HealthDetail';
 import AddMedication from '../screens/reminders/AddMedication'
 import AddLabsAppointment from '../screens/reminders/AddLabsAppointment'
 import AddDoctorAppointment from '../screens/reminders/AddDoctorAppointment'
+import EditProfile from '../screens/settings/EditProfile'
+import EditHealthProfile from '../screens/settings/EditHealthProfile'
+import EditFamilyDetails from '../screens/settings/EditFamilyDetails'
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +42,9 @@ const RootNavigator = () => {
       <Stack.Screen name="AddMedication" component={AddMedication} />
       <Stack.Screen name="AddLabsAppointment" component={AddLabsAppointment} />
       <Stack.Screen name="AddDoctorAppointment" component={AddDoctorAppointment} />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
+      <Stack.Screen name="EditHealthProfile" component={EditHealthProfile} />
+      <Stack.Screen name="EditFamilyDetails" component={EditFamilyDetails} />
     </Stack.Navigator>
   );
 };

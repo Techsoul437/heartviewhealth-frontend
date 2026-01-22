@@ -68,5 +68,26 @@
   "labs": "लैब्स",
   "labsDesc": "लैब टेस्ट और रिपोर्ट्स को ट्रैक करें",
   "doctorVisits": "डॉक्टर विज़िट्स",
-  "doctorVisitsDesc": "डॉक्टर की अपॉइंटमेंट और फॉलो-अप्स को मैनेज करें"
+  "doctorVisitsDesc": "डॉक्टर की अपॉइंटमेंट और फॉलो-अप्स को मैनेज करें",
+  "labsAppointment": "लैब अपॉइंटमेंट",
+  "doctorAppointment": "डॉक्टर अपॉइंटमेंट",
+  "add": "जोड़ें",
+  "settings": "सेटिंग्स",
+  "managePreferences": "अपनी प्राथमिकताओं को प्रबंधित करें",
+  "appearance": "दिखावट",
+  "theme": "थीम",
+  "darkMode": "डार्क मोड",
+  "lightMode": "लाइट मोड",
+  "language": "भाषा",
+  "profile": "प्रोफ़ाइल",
+  "editProfile": "प्रोफ़ाइल संपादित करें",
+  "healthProfile": "स्वास्थ्य प्रोफ़ाइल",
+  "familyMembers": "परिवार के सदस्य",
+  "emergencyContacts": "आपातकालीन संपर्क",
+  "about": "ऐप के बारे में",
+  "privacyPolicy": "गोपनीयता नीति",
+  "termsOfService": "सेवा की शर्तें",
+  "helpSupport": "सहायता और समर्थन",
+  "logout": "लॉग आउट"
+
 }

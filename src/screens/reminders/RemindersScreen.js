@@ -1,4 +1,12 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useContext } from 'react';
 import { useTheme } from '../../theme/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
@@ -15,6 +23,51 @@ const RemindersScreen = () => {
   const { theme } = useTheme();
   const navigation = useNavigation();
   useContext(LanguageContext);
+
+  const medications = [
+    {
+      medicineName: 'Aspirin',
+      Dosage: '75mg',
+      time: 'Morning',
+      schedule: 'Every Day',
+    },
+    {
+      medicineName: 'Aspirin',
+      Dosage: '75mg',
+      time: 'Morning',
+      schedule: 'CustomeDate',
+      date: 'Fab 1, 2026',
+    },
+  ];
+
+  const labsAppointment = [
+    {
+      labName: 'Xyz Lab',
+      time: '3 Month',
+      schedule: 'Every Day',
+    },
+    {
+      labName: 'Xyz Lab',
+      time: '6 Month',
+      schedule: 'CustomeDate',
+      date: 'Fab 1, 2026',
+    },
+  ];
+
+  const DoctorAppointment = [
+    {
+      doctorName: 'Xyz Lab',
+      time: '3 Month',
+      schedule: 'Every Day',
+    },
+    {
+      doctorName: 'Xyz Lab',
+      time: '6 Month',
+      schedule: 'CustomeDate',
+      date: 'Fab 1, 2026',
+    },
+  ];
+
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: theme.background }]}
@@ -24,93 +77,395 @@ const RemindersScreen = () => {
         subTitle={i18n.t('addRemindersDecs')}
         headerStyles={{ marginBottom: RFValue(15) }}
       />
-      <View style={{justifyContent:'center',flex:1}}>
-        <Image source={ImagesPath.reminder} style={styles.reminderImg} />
-        <Text style={[styles.nothing,{color:theme.text}]}>{i18n.t('nothingHereYet')}</Text>
-        <Text style={[styles.reminderNote,{color:theme.gray,marginTop:RFValue(10)}]}>{i18n.t('noRemindersAdded')}</Text>
-        <Text style={[styles.reminderNote,{color:theme.gray}]}>{i18n.t('startAddingReminders')}</Text>
-        <TouchableOpacity
-          style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
-          onPress={()=>navigation.navigate('AddMedication')}
-        >
-          <View
+      {medications?.length <= 0 &&
+      labsAppointment.length <= 0 &&
+      DoctorAppointment.length <= 0 ? (
+        <View style={{ justifyContent: 'center', flex: 1 }}>
+          <Image source={ImagesPath.reminder} style={styles.reminderImg} />
+          <Text style={[styles.nothing, { color: theme.text }]}>
+            {i18n.t('nothingHereYet')}
+          </Text>
+          <Text
             style={[
-              styles.innerContainer,
-              {
-                backgroundColor: theme.innerBackground,
-                borderColor: theme.inputBorder,
-                marginTop:RFValue(20)
-              },
+              styles.reminderNote,
+              { color: theme.gray, marginTop: RFValue(10) },
             ]}
           >
-            <View style={styles.addReminderContiner}>
-                <View style={[styles.reminderPill,{backgroundColor:COLORS.blue + '70'}]}>
-                    <Image source={ImagesPath.pill} style={styles.reminderIcon}/>
+            {i18n.t('noRemindersAdded')}
+          </Text>
+          <Text style={[styles.reminderNote, { color: theme.gray }]}>
+            {i18n.t('startAddingReminders')}
+          </Text>
+          <TouchableOpacity
+            style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
+            onPress={() => navigation.navigate('AddMedication')}
+          >
+            <View
+              style={[
+                styles.innerContainer,
+                {
+                  backgroundColor: theme.innerBackground,
+                  borderColor: theme.inputBorder,
+                  marginTop: RFValue(20),
+                },
+              ]}
+            >
+              <View style={styles.addReminderContiner}>
+                <View
+                  style={[
+                    styles.reminderPill,
+                    { backgroundColor: COLORS.blue + '70' },
+                  ]}
+                >
+                  <Image source={ImagesPath.pill} style={styles.reminderIcon} />
                 </View>
                 <View>
-                  <Text style={[styles.reminderHeader,{color:theme.text}]}>{i18n.t('medications')}</Text>
-                  <Text style={[styles.reminderdecs,{color:theme.gray}]}>{i18n.t('medicationsDesc')}</Text>
+                  <Text style={[styles.reminderHeader, { color: theme.text }]}>
+                    {i18n.t('medications')}
+                  </Text>
+                  <Text style={[styles.reminderdecs, { color: theme.gray }]}>
+                    {i18n.t('medicationsDesc')}
+                  </Text>
                 </View>
+              </View>
+              <Image
+                source={ImagesPath.plus}
+                style={[styles.plusIcon, { tintColor: theme.inputBorder }]}
+              />
             </View>
-            <Image source={ImagesPath.plus} style={[styles.plusIcon,{tintColor:theme.inputBorder}]}/>
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
-          onPress={()=>navigation.navigate('AddLabsAppointment')}
-        >
-          <View
-            style={[
-              styles.innerContainer,
-              {
-                backgroundColor: theme.innerBackground,
-                borderColor: theme.inputBorder,
-              },
-            ]}
+          <TouchableOpacity
+            style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
+            onPress={() => navigation.navigate('AddLabsAppointment')}
           >
-            <View style={styles.addReminderContiner}>
-                <View style={[styles.reminderPill,{backgroundColor:COLORS.yellow + '20'}]}>
-                    <Image source={ImagesPath.lab} style={styles.labIcon}/>
+            <View
+              style={[
+                styles.innerContainer,
+                {
+                  backgroundColor: theme.innerBackground,
+                  borderColor: theme.inputBorder,
+                },
+              ]}
+            >
+              <View style={styles.addReminderContiner}>
+                <View
+                  style={[
+                    styles.reminderPill,
+                    { backgroundColor: COLORS.yellow + '20' },
+                  ]}
+                >
+                  <Image source={ImagesPath.lab} style={styles.labIcon} />
                 </View>
                 <View>
-                  <Text style={[styles.reminderHeader,{color:theme.text}]}>{i18n.t('labs')}</Text>
-                  <Text style={[styles.reminderdecs,{color:theme.gray}]}>{i18n.t('labsDesc')}</Text>
+                  <Text style={[styles.reminderHeader, { color: theme.text }]}>
+                    {i18n.t('labs')}
+                  </Text>
+                  <Text style={[styles.reminderdecs, { color: theme.gray }]}>
+                    {i18n.t('labsDesc')}
+                  </Text>
                 </View>
+              </View>
+              <Image
+                source={ImagesPath.plus}
+                style={[styles.plusIcon, { tintColor: theme.inputBorder }]}
+              />
             </View>
-            <Image source={ImagesPath.plus} style={[styles.plusIcon,{tintColor:theme.inputBorder}]}/>
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
-          onPress={()=>navigation.navigate('AddDoctorAppointment')}
-        >
-          <View
-            style={[
-              styles.innerContainer,
-              {
-                backgroundColor: theme.innerBackground,
-                borderColor: theme.inputBorder,
-              },
-            ]}
+          <TouchableOpacity
+            style={[styles.shadowWrapper, { shadowColor: theme.shadowColor }]}
+            onPress={() => navigation.navigate('AddDoctorAppointment')}
           >
-            <View style={styles.addReminderContiner}>
-                <View style={[styles.reminderPill,{backgroundColor:COLORS.lightGreen.slice(0, 7) + '20'}]}>
-                    <Image source={ImagesPath.stethoscope} style={styles.stethoscope}/>
+            <View
+              style={[
+                styles.innerContainer,
+                {
+                  backgroundColor: theme.innerBackground,
+                  borderColor: theme.inputBorder,
+                },
+              ]}
+            >
+              <View style={styles.addReminderContiner}>
+                <View
+                  style={[
+                    styles.reminderPill,
+                    { backgroundColor: COLORS.lightGreen.slice(0, 7) + '20' },
+                  ]}
+                >
+                  <Image
+                    source={ImagesPath.stethoscope}
+                    style={styles.stethoscope}
+                  />
                 </View>
                 <View>
-                  <Text style={[styles.reminderHeader,{color:theme.text}]}>{i18n.t('doctorVisits')}</Text>
-                  <Text style={[styles.reminderdecs,{color:theme.gray}]}>{i18n.t('doctorVisitsDesc')}</Text>
+                  <Text style={[styles.reminderHeader, { color: theme.text }]}>
+                    {i18n.t('doctorVisits')}
+                  </Text>
+                  <Text style={[styles.reminderdecs, { color: theme.gray }]}>
+                    {i18n.t('doctorVisitsDesc')}
+                  </Text>
                 </View>
+              </View>
+              <View>
+                <Image
+                  source={ImagesPath.plus}
+                  style={[styles.plusIcon, { tintColor: theme.inputBorder }]}
+                />
+              </View>
             </View>
-            <View >
-                <Image source={ImagesPath.plus} style={[styles.plusIcon,{tintColor:theme.inputBorder}]}/>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {medications?.length >= 1 && (
+            <View style={{ marginTop: RFValue(20) }}>
+              <View style={styles.reminderHeaderbox}>
+                <Text style={[styles.reminderHeader, { color: theme.text }]}>
+                  {i18n.t('medications')}
+                </Text>
+                <TouchableOpacity
+                  style={styles.addBtn}
+                  onPress={() => navigation.navigate('AddMedication')}
+                >
+                  <Image
+                    source={ImagesPath.plus}
+                    style={[styles.plusIcon, { tintColor: COLORS.darkGreen }]}
+                  />
+                  <Text style={styles.addText}>{i18n.t('add')}</Text>
+                </TouchableOpacity>
+              </View>
+              <FlatList
+                data={medications}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity
+                      style={[
+                        styles.shadowWrapper,
+                        { shadowColor: theme.shadowColor },
+                      ]}
+                      onPress={() => navigation.navigate('AddMedication')}
+                    >
+                      <View
+                        style={[
+                          styles.reminderContainer,
+                          {
+                            backgroundColor: theme.innerBackground,
+                            borderColor: theme.inputBorder,
+                            // marginTop: RFValue(20),
+                          },
+                        ]}
+                      >
+                        <View
+                          style={[
+                            styles.reminderPillbox,
+                            { backgroundColor: COLORS.blue + '70' },
+                          ]}
+                        >
+                          <Image
+                            source={ImagesPath.pill}
+                            style={styles.reminderIcon}
+                          />
+                        </View>
+                        <View>
+                          <Text
+                            style={[styles.nameText, { color: theme.text }]}
+                          >
+                            {item.medicineName}
+                          </Text>
+                          <Text
+                            style={[
+                              styles.dosageText,
+                              { color: COLORS.softGray },
+                            ]}
+                          >
+                            {item.Dosage} • {item.time}
+                          </Text>
+                          <Text
+                            style={[
+                              styles.scheduleText,
+                              { color: COLORS.softGray },
+                            ]}
+                          >
+                            {item.schedule == 'CustomeDate'
+                              ? item.date
+                              : item.schedule}
+                          </Text>
+                        </View>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
             </View>
-            
-          </View>
-        </TouchableOpacity>
-      </View>
+          )}
+          {labsAppointment?.length >= 1 && (
+            <View style={{ marginTop: RFValue(20) }}>
+              <View style={styles.reminderHeaderbox}>
+                <Text style={[styles.reminderHeader, { color: theme.text }]}>
+                  {i18n.t('labsAppointment')}
+                </Text>
+                <TouchableOpacity
+                  style={styles.addBtn}
+                  onPress={() => navigation.navigate('AddLabsAppointment')}
+                >
+                  <Image
+                    source={ImagesPath.plus}
+                    style={[styles.plusIcon, { tintColor: COLORS.darkGreen }]}
+                  />
+                  <Text style={styles.addText}>{i18n.t('add')}</Text>
+                </TouchableOpacity>
+              </View>
+              <FlatList
+                data={labsAppointment}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity
+                      style={[
+                        styles.shadowWrapper,
+                        { shadowColor: theme.shadowColor },
+                      ]}
+                      onPress={() => navigation.navigate('AddMedication')}
+                    >
+                      <View
+                        style={[
+                          styles.reminderContainer,
+                          {
+                            backgroundColor: theme.innerBackground,
+                            borderColor: theme.inputBorder,
+                            // marginTop: RFValue(20),
+                          },
+                        ]}
+                      >
+                        <View
+                          style={[
+                            styles.reminderPill,
+                            { backgroundColor: COLORS.yellow + '20' },
+                          ]}
+                        >
+                          <Image
+                            source={ImagesPath.lab}
+                            style={styles.labIcon}
+                          />
+                        </View>
+                        <View>
+                          <Text
+                            style={[styles.nameText, { color: theme.text }]}
+                          >
+                            {item.labName}
+                          </Text>
+                          <Text
+                            style={[
+                              styles.dosageText,
+                              { color: COLORS.softGray },
+                            ]}
+                          >
+                            {item.time}
+                          </Text>
+                          <Text
+                            style={[
+                              styles.scheduleText,
+                              { color: COLORS.softGray },
+                            ]}
+                          >
+                            {item.schedule == 'CustomeDate'
+                              ? item.date
+                              : item.schedule}
+                          </Text>
+                        </View>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </View>
+          )}
+          {DoctorAppointment?.length >= 1 && (
+            <View style={{ marginTop: RFValue(20) }}>
+              <View style={styles.reminderHeaderbox}>
+                <Text style={[styles.reminderHeader, { color: theme.text }]}>
+                   {i18n.t('doctorAppointment')}
+                </Text>
+                <TouchableOpacity
+                  style={styles.addBtn}
+                  onPress={() => navigation.navigate('AddDoctorAppointment')}
+                >
+                  <Image
+                    source={ImagesPath.plus}
+                    style={[styles.plusIcon, { tintColor: COLORS.darkGreen }]}
+                  />
+                  <Text style={styles.addText}>{i18n.t('add')}</Text>
+                </TouchableOpacity>
+              </View>
+              <FlatList
+                data={DoctorAppointment}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity
+                      style={[
+                        styles.shadowWrapper,
+                        { shadowColor: theme.shadowColor },
+                      ]}
+                      onPress={() => navigation.navigate('AddMedication')}
+                    >
+                      <View
+                        style={[
+                          styles.reminderContainer,
+                          {
+                            backgroundColor: theme.innerBackground,
+                            borderColor: theme.inputBorder,
+                            // marginTop: RFValue(20),
+                          },
+                        ]}
+                      >
+                        <View
+                          style={[
+                            styles.reminderPill,
+                            {
+                              backgroundColor:
+                                COLORS.lightGreen.slice(0, 7) + '20',
+                            },
+                          ]}
+                        >
+                          <Image
+                            source={ImagesPath.stethoscope}
+                            style={styles.stethoscope}
+                          />
+                        </View>
+                        <View>
+                          <Text
+                            style={[styles.nameText, { color: theme.text }]}
+                          >
+                            {item.doctorName}
+                          </Text>
+                          <Text
+                            style={[
+                              styles.dosageText,
+                              { color: COLORS.softGray },
+                            ]}
+                          >
+                            {item.time}
+                          </Text>
+                          <Text
+                            style={[
+                              styles.scheduleText,
+                              { color: COLORS.softGray },
+                            ]}
+                          >
+                            {item.schedule == 'CustomeDate'
+                              ? item.date
+                              : item.schedule}
+                          </Text>
+                        </View>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </View>
+          )}
+        </ScrollView>
+      )}
     </SafeAreaView>
   );
 };
@@ -141,64 +496,110 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  reminderImg:{
-    height:RFValue(100),
-    width:RFValue(200),
-    resizeMode:'contain',
-    alignSelf:'center'
+  reminderImg: {
+    height: RFValue(100),
+    width: RFValue(200),
+    resizeMode: 'contain',
+    alignSelf: 'center',
   },
-  
-  nothing:{
-    fontFamily:FONTS.BOLD,
-    fontSize:RFValue(18),
-    textAlign:'center',
-    marginTop:RFValue(10)
+
+  nothing: {
+    fontFamily: FONTS.BOLD,
+    fontSize: RFValue(18),
+    textAlign: 'center',
+    marginTop: RFValue(10),
   },
-  reminderNote:{
-    fontFamily:FONTS.REGULAR,
-    fontSize:RFValue(12),
-    textAlign:'center',
-    
+  reminderNote: {
+    fontFamily: FONTS.REGULAR,
+    fontSize: RFValue(12),
+    textAlign: 'center',
   },
-  addReminderContiner:{
-    flexDirection:'row',
-    alignItems:'center',
-    gap:RFValue(10),
+  addReminderContiner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: RFValue(10),
   },
-  reminderPill:{
-    height:RFValue(40),
-    width:RFValue(40),
-    borderRadius:RFValue(10),
-    justifyContent:'center',
-    alignItems:'center'
+  reminderPill: {
+    height: RFValue(40),
+    width: RFValue(40),
+    borderRadius: RFValue(10),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  reminderIcon:{
-    height:RFValue(15),
-    width:RFValue(15),
-    resizeMode:'contain'
+  reminderIcon: {
+    height: RFValue(15),
+    width: RFValue(15),
+    resizeMode: 'contain',
   },
-  labIcon:{
-    height:RFValue(20),
-    width:RFValue(20),
-    resizeMode:'contain'
+  labIcon: {
+    height: RFValue(20),
+    width: RFValue(20),
+    resizeMode: 'contain',
   },
-  stethoscope:{
-    height:RFValue(20),
-    width:RFValue(20),
-    resizeMode:'contain'
+  stethoscope: {
+    height: RFValue(20),
+    width: RFValue(20),
+    resizeMode: 'contain',
   },
-  reminderHeader:{
-    fontFamily:FONTS.REGULAR,
-    fontSize:RFValue(14)
+  reminderHeader: {
+    fontFamily: FONTS.REGULAR,
+    fontSize: RFValue(14),
   },
-  reminderdecs:{
-     fontFamily:FONTS.REGULAR,
-    fontSize:RFValue(10),
-    marginTop:RFValue(3)
+  reminderdecs: {
+    fontFamily: FONTS.REGULAR,
+    fontSize: RFValue(10),
+    marginTop: RFValue(3),
   },
-  plusIcon:{
-    height:RFValue(15),
-    width:RFValue(15),
-    resizeMode:'contain'
-  }
+  plusIcon: {
+    height: RFValue(15),
+    width: RFValue(15),
+    resizeMode: 'contain',
+  },
+  reminderHeaderbox: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  addBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+  },
+  addText: {
+    fontFamily: FONTS.REGULAR,
+    fontSize: RFValue(12),
+    color: COLORS.darkGreen,
+  },
+  reminderBox: {
+    flexDirection: 'row',
+  },
+  reminderContainer: {
+    borderRadius: RFValue(10),
+    paddingVertical: RFValue(15),
+    paddingHorizontal: RFValue(12),
+    borderWidth: 1,
+    flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    gap: 10,
+  },
+  reminderPillbox: {
+    height: RFValue(35),
+    width: RFValue(35),
+    borderRadius: RFValue(10),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  nameText: {
+    fontFamily: FONTS.REGULAR,
+    fontSize: RFValue(12),
+  },
+  dosageText: {
+    fontFamily: FONTS.REGULAR,
+    fontSize: RFValue(11),
+  },
+  scheduleText: {
+    fontFamily: FONTS.REGULAR,
+    fontSize: RFValue(10),
+  },
 });

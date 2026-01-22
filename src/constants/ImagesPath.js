@@ -31,10 +31,12 @@ export default {
   lab:require('../assets/icon/lab.png'),
   stethoscope:require('../assets/icon/stethoscope.png'),
   clock:require('../assets/icon/clock.png'),
+  sortDownArrow:require('../assets/icon/sortDownArrow.png'),
   //Images
   logo: require('../assets/image/logo.png'),
   reminder: require('../assets/image/reminder.png'),
-
+  darkMode: require('../assets/image/darkMode.png'),
+  lightMode: require('../assets/image/lightMode.png'),
 
   //Videos
   splashVideo: require('../assets/video/SplashVideo.mp4'),

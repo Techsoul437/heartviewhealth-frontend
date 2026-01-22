@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home/HomeScreen';
 import RemindersScreen from '../screens/reminders/RemindersScreen';
 import Eco from '../screens/Eco';
-import Setting from '../screens/Setting';
+import SettingScreen from '../screens/settings/SettingScreen'
 import { Image, StyleSheet } from 'react-native';
 import { COLORS } from '../constants/Colour';
 import { FONTS } from '../constants/Fonts';
@@ -123,8 +123,8 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name="Setting"
-        component={Setting}
+        name="SettingScreen"
+        component={SettingScreen}
         options={{
           tabBarLabel: 'Settings',
           tabBarActiveTintColor: COLORS.primary,
