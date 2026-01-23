@@ -126,7 +126,7 @@ const AddMedication = () => {
                 />
               )}
               <GradientButton
-                  title="Save"
+                  title={i18n.t('save')}
                   onPress={()=>navigation.goBack()}
                   style={{ marginBottom: RFValue(12) }}
                 />

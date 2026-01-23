@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions, useWindowDimensions } from 'react-native';
 import React, { useContext } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from '../../theme/ThemeContext';
@@ -6,7 +6,7 @@ import ImagesPath from '../../constants/ImagesPath';
 import { LanguageContext } from '../../constants/LanguageContext';
 import i18n from '../../assets/i18n';
 
-const { width } = Dimensions.get('window');
+// const { width } = Dimensions.get('window');
 
 const HealthCard = () => {
   const { theme } = useTheme();
@@ -38,8 +38,12 @@ const HealthCard = () => {
     },
   ];
 
-  const spacing = 12;
-  const cardWidth = (width - 14 * 4) / 3; 
+ const { width } = useWindowDimensions();
+const isTablet = width >= 768;
+
+const spacing = 16;
+const containerMaxWidth = isTablet ? 800 : width;
+const cardWidth = (containerMaxWidth - spacing * 4) / 3;
 
   return (
     <View style={styles.container}>

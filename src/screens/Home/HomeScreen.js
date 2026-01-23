@@ -31,6 +31,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: theme.background }]}
+      
     >
       <CommonHeader
         title={i18n.t('welcome')}

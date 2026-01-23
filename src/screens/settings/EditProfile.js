@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
@@ -20,15 +20,18 @@ import CommonDropdown from '../../components/CommonDropdown';
 import GradientButton from '../../components/GradientButton';
 import { COLORS } from '../../constants/Colour';
 import ImagesPath from '../../constants/ImagesPath';
+import { LanguageContext } from '../../constants/LanguageContext';
+import i18n from '../../assets/i18n';
 
 const EditProfile = () => {
   const { theme } = useTheme();
+  useContext(LanguageContext);
   const navigation = useNavigation();
   const [fullName, setFullName] = useState('abc');
   const [email, setEmail] = useState('abc@gmail.com');
-  const [dob, setDob] = useState(null);
+  const [dob, setDob] = useState(new Date('2000-01-01'));
   const [gender, setGender] = useState('male');
-  const [country, setCountry] = useState(null);
+  const [country, setCountry] = useState('india');
 
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -103,14 +106,14 @@ const EditProfile = () => {
                     source={ImagesPath.leftArrow}
                     style={styles.leftIcon}
                   />
-                  <Text style={[styles.back, { color: theme.text }]}>Back</Text>
+                  <Text style={[styles.back, { color: theme.text }]}>{i18n.t('back')}</Text>
                 </TouchableOpacity>
                 <Text style={[styles.profileText, { color: theme.text }]}>
-                  Edit your profile
+                  {i18n.t('editYourProfile')}
                 </Text>
                 <CommonTextInput
-                  label="Full Name"
-                  placeholder="Enter your full name"
+                  label={i18n.t('fullName')}
+                  placeholder={i18n.t('enterFullName')}
                   value={fullName}
                   onChangeText={text => {
                     setFullName(text);
@@ -120,9 +123,9 @@ const EditProfile = () => {
                 />
 
                 <CommonDatePickerInput
-                  label="Date of Birth"
+                  label={i18n.t('dateOfBirth')}
                   value={dob}
-                  placeholder="Your date of birth"
+                  placeholder={i18n.t('yourDateOfBirth')}
                   onChange={date => {
                     setDob(date);
                     setDobError('');
@@ -131,12 +134,12 @@ const EditProfile = () => {
                 />
 
                 <CommonRadioGroup
-                  label="Gender"
+                  label={i18n.t('gender')}
                   value={gender}
                   options={[
-                    { label: 'Male', value: 'male' },
-                    { label: 'Female', value: 'female' },
-                    { label: 'Other', value: 'other' },
+                    { label: (i18n.t('male')), value: 'male' },
+                    { label:  (i18n.t('female')), value: 'female' },
+                    { label:  (i18n.t('other')), value: 'other' },
                   ]}
                   onChange={val => {
                     setGender(val);
@@ -146,8 +149,8 @@ const EditProfile = () => {
                 />
 
                 <CommonTextInput
-                  label="Email Address"
-                  placeholder="Enter your email address"
+                  label={i18n.t('emailAddress')}
+                  placeholder={i18n.t('enterEmailAddress')}
                   keyboardType="email-address"
                   value={email}
                   onChangeText={text => {
@@ -158,24 +161,24 @@ const EditProfile = () => {
                 />
 
                 <CommonDropdown
-                  label="Country"
+                  label={i18n.t('country')}
                   value={country}
                   setValue={val => {
                     setCountry(val);
                     setCountryError('');
                   }}
                   items={[
-                    { label: 'India', value: 'india' },
-                    { label: 'USA', value: 'usa' },
-                    { label: 'UK', value: 'uk' },
-                    { label: 'Canada', value: 'Canada' },
+                    { label: (i18n.t('india')), value: 'india' },
+                    { label: (i18n.t('usa')), value: 'usa' },
+                    { label: (i18n.t('uk')), value: 'uk' },
+                    { label: (i18n.t('canada')), value: 'Canada' },
                   ]}
-                  placeholder="Select your country"
+                  placeholder={i18n.t('selectCountry')}
                   error={countryError}
                 />
 
                 <GradientButton
-                  title="Save Changes"
+                  title={i18n.t('saveChanges')}
                   onPress={onContinue}
                   style={{ marginBottom: RFValue(12), marginTop: RFValue(4) }}
                 />

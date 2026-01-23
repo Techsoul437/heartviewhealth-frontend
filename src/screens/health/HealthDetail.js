@@ -446,13 +446,13 @@ const HealthDetail = ({ value = 67 }) => {
         ]}
       >
         <Text style={[styles.rangeTitle, { color: theme.text }]}>
-          Normal Range
+          {i18n.t('normalRange')}
         </Text>
         <Text style={[styles.rangeText, { color: theme.gray }]}>
-          70 - 100 mg/dL (Fasting)
+         {i18n.t('fastingRange')}
         </Text>
         <Text style={[styles.rangeText, { color: theme.gray }]}>
-          Less than 140 mg/dL (2 hours after eating)
+         {i18n.t('postMealRange')}
         </Text>
       </View>
 
@@ -466,7 +466,7 @@ const HealthDetail = ({ value = 67 }) => {
           },
         ]}
       >
-        <Text style={styles.title}>You vs People Like You</Text>
+        <Text style={[styles.title,{color:theme.text}]}>{i18n.t('comparison')}</Text>
 
         <View style={styles.sliderContainer}>
           {/* Indicator (Text + Arrow) */}
@@ -476,10 +476,11 @@ const HealthDetail = ({ value = 67 }) => {
               { left: indicatorLeft },
             ]}
           >
-            <Text style={styles.indicatorText}>{value}</Text>
+            <Text style={[styles.indicatorText,{color:theme.text}]}>{value}</Text>
             <Image
               source={ImagesPath.sortDownArrow}
               style={styles.arrow}
+              tintColor={theme.text}
             />
           </View>
 
@@ -537,10 +538,10 @@ const HealthDetail = ({ value = 67 }) => {
 
         <View style={styles.chartFooter}>
           <Text style={styles.footerText}>
-            Avg: <Text style={styles.bold}>95 mg/dL</Text>
+            {i18n.t('avg')}: <Text style={[styles.bold,{color:theme.text}]}>95 mg/dL</Text>
           </Text>
           <Text style={styles.footerText}>
-            Range: <Text style={styles.bold}>92 - 98</Text>
+            {i18n.t('range')}: <Text style={[styles.bold,{color:theme.text}]}>92 - 98</Text>
           </Text>
         </View>
       </View>

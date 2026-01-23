@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home/HomeScreen';
 import RemindersScreen from '../screens/reminders/RemindersScreen';
@@ -12,6 +12,8 @@ import ImagesPath from '../constants/ImagesPath';
 import { useTheme } from '../theme/ThemeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HealthScreen from '../screens/health/HealthScreen'
+import { LanguageContext } from '../constants/LanguageContext';
+import i18n from '../assets/i18n';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -20,6 +22,7 @@ const Stack = createNativeStackNavigator();
 
 const BottomTabs = () => {
   const { theme } = useTheme();
+  useContext(LanguageContext);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -37,7 +40,7 @@ const BottomTabs = () => {
         options={{
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,
-          tabBarLabel: 'Home',
+          tabBarLabel: (i18n.t('home')),
           tabBarLabelStyle: {
             fontSize: RFValue(10),
             fontFamily: FONTS.REGULAR,
@@ -57,7 +60,7 @@ const BottomTabs = () => {
         name="HealthScreen"
         component={HealthScreen}
         options={{
-          tabBarLabel: 'Health',
+          tabBarLabel: (i18n.t('health')),
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {
@@ -80,7 +83,7 @@ const BottomTabs = () => {
         name="RemindersScreen"
         component={RemindersScreen}
         options={{
-          tabBarLabel: 'Reminders',
+          tabBarLabel: (i18n.t('reminders')),
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {
@@ -103,7 +106,7 @@ const BottomTabs = () => {
         name="Eco"
         component={Eco}
         options={{
-          tabBarLabel: 'ECO',
+          tabBarLabel: (i18n.t('eco')),
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {
@@ -126,7 +129,7 @@ const BottomTabs = () => {
         name="SettingScreen"
         component={SettingScreen}
         options={{
-          tabBarLabel: 'Settings',
+          tabBarLabel: (i18n.t('settings')),
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.gray,
           tabBarLabelStyle: {

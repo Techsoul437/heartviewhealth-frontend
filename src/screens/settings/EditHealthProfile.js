@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FONTS } from '../../constants/Fonts';
@@ -18,9 +18,12 @@ import CommonTextInput from '../../components/CommonTextInput';
 import CommonRadioGroup from '../../components/CommonRadioGroup';
 import GradientButton from '../../components/GradientButton';
 import { COLORS } from '../../constants/Colour';
+import { LanguageContext } from '../../constants/LanguageContext';
+import i18n from '../../assets/i18n';
 
 const EditHealthProfile = () => {
   const { theme } = useTheme();
+  useContext(LanguageContext);
   const navigation = useNavigation();
   const [height, setHeight] = useState('175cm');
   const [weight, setWeight] = useState('55kg');
@@ -111,15 +114,15 @@ const EditHealthProfile = () => {
                     source={ImagesPath.leftArrow}
                     style={styles.leftIcon}
                   />
-                  <Text style={[styles.back, { color: theme.text }]}>Back</Text>
+                  <Text style={[styles.back, { color: theme.text }]}>{i18n.t('back')}</Text>
                 </TouchableOpacity>
                 <Text style={[styles.profileText, { color: theme.text }]}>
-                 Edit Health Profile
+                 {i18n.t('editHealthProfile')}
                 </Text>
 
                 <CommonTextInput
-                  label="Height (cm)"
-                  placeholder="e.g., 175 cm"
+                  label={i18n.t('height')}
+                  placeholder={i18n.t('heightExample')}
                   value={height}
                   onChangeText={text => {
                     setHeight(text);
@@ -129,8 +132,8 @@ const EditHealthProfile = () => {
                 />
 
                 <CommonTextInput
-                  label="Weight (kg)"
-                  placeholder="e.g., 55 kg"
+                  label={i18n.t('weightkg')}
+                  placeholder={i18n.t('weightExample')}
                   value={weight}
                   onChangeText={text => {
                     setWeight(text);
@@ -140,11 +143,11 @@ const EditHealthProfile = () => {
                 />
 
                 <CommonRadioGroup
-                  label="Do you have blood pressure concerns?"
+                  label={i18n.t('bloodPressureConcern')}
                   value={bloodPressure}
                   options={[
-                    { label: 'Yes', value: 'yes' },
-                    { label: 'No', value: 'no' },
+                    { label: (i18n.t('yes')), value: 'yes' },
+                    { label: (i18n.t('no')), value: 'no' },
                   ]}
                   onChange={val => {
                     setBloodPressure(val);
@@ -154,11 +157,11 @@ const EditHealthProfile = () => {
                 />
 
                 <CommonRadioGroup
-                  label="Do you have blood sugar concerns?"
+                  label={i18n.t('bloodSugarConcern')}
                   value={sugar}
                   options={[
-                    { label: 'Yes', value: 'yes' },
-                    { label: 'No', value: 'no' },
+                     { label: (i18n.t('yes')), value: 'yes' },
+                    { label: (i18n.t('no')), value: 'no' },
                   ]}
                   onChange={val => {
                     setSugar(val);
@@ -168,12 +171,12 @@ const EditHealthProfile = () => {
                 />
 
                 <CommonRadioGroup
-                  label="Heart problem history?"
+                  label={i18n.t('heartProblemHistory')}
                   value={history}
                   options={[
-                    { label: 'Self', value: 'self' },
-                    { label: 'Family', value: 'family' },
-                    { label: 'None', value: 'none' },
+                    { label: (i18n.t('self')), value: 'self' },
+                    { label: (i18n.t('family')), value: 'family' },
+                    { label: (i18n.t('none')), value: 'none' },
                   ]}
                   onChange={val => {
                     setHistory(val);
@@ -183,12 +186,12 @@ const EditHealthProfile = () => {
                 />
 
                 <CommonRadioGroup
-                  label="Smoking/Tobacco use?"
+                  label={i18n.t('smokingTobacco')}
                   value={smoking}
                   options={[
-                    { label: 'Yes', value: 'yes' },
-                    { label: 'No', value: 'no' },
-                    { label: 'Past', value: 'past' },
+                     { label: (i18n.t('yes')), value: 'yes' },
+                    { label: (i18n.t('no')), value: 'no' },
+                    { label: (i18n.t('past')), value: 'past' },
                   ]}
                   onChange={val => {
                     setSmoking(val);
@@ -198,7 +201,7 @@ const EditHealthProfile = () => {
                 />
 
                 <GradientButton
-                  title="Save Changes"
+                  title={i18n.t('saveChanges')}
                   onPress={onContinue}
                   style={{ marginBottom: RFValue(15), marginTop: RFValue(4) }}
                 />

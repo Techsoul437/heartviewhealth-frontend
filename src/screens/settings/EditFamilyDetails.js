@@ -252,7 +252,7 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
@@ -264,9 +264,12 @@ import CommonTextInput from '../../components/CommonTextInput';
 import CommonDropdown from '../../components/CommonDropdown';
 import GradientButton from '../../components/GradientButton';
 import ImagesPath from '../../constants/ImagesPath';
+import { LanguageContext } from '../../constants/LanguageContext';
+import i18n from '../../assets/i18n';
 
 const EditFamilyDetails = () => {
   const { theme } = useTheme();
+  useContext(LanguageContext);
   const navigation = useNavigation();
   const MAX_MEMBERS = 3;
 
@@ -275,9 +278,8 @@ const EditFamilyDetails = () => {
       id: Date.now(),
       name: 'tdrt',
       phone: '8547965879',
-      relation: 'child', 
+      relation: 'child',
     },
-    
   ]);
 
   const [errors, setErrors] = useState({});
@@ -351,7 +353,7 @@ const EditFamilyDetails = () => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flexGrow: 1 ,marginBottom:50}}
+          contentContainerStyle={{ flexGrow: 1, marginBottom: 50 }}
         >
           <View style={{ flex: 1 }}>
             <View
@@ -372,11 +374,13 @@ const EditFamilyDetails = () => {
                     source={ImagesPath.leftArrow}
                     style={styles.leftIcon}
                   />
-                  <Text style={[styles.back, { color: theme.text }]}>Back</Text>
+                  <Text style={[styles.back, { color: theme.text }]}>
+                    {i18n.t('back')}
+                  </Text>
                 </TouchableOpacity>
 
                 <Text style={[styles.title, { color: theme.text }]}>
-                  Family Details
+                  {i18n.t('familyDetails')}
                 </Text>
 
                 {/* Members List */}
@@ -387,7 +391,7 @@ const EditFamilyDetails = () => {
                         <Text
                           style={[styles.memberTitle, { color: theme.text }]}
                         >
-                          Member {index + 1}
+                          {i18n.t('member')} {index + 1}
                         </Text>
 
                         <TouchableOpacity onPress={() => removeMember(item.id)}>
@@ -404,8 +408,8 @@ const EditFamilyDetails = () => {
                     )}
 
                     <CommonTextInput
-                      label="Name"
-                      placeholder="Enter full name"
+                      label={i18n.t('fullName')}
+                      placeholder={i18n.t('enterFullName')}
                       value={item.name}
                       onChangeText={text => {
                         const updated = [...members];
@@ -420,8 +424,8 @@ const EditFamilyDetails = () => {
                     />
 
                     <CommonTextInput
-                      label="Phone Number"
-                      placeholder="Enter phone number"
+                      label={i18n.t('phoneNumber')}
+                      placeholder={i18n.t('enterPhoneNumber')}
                       keyboardType="phone-pad"
                       value={item.phone}
                       onChangeText={text => {
@@ -437,7 +441,7 @@ const EditFamilyDetails = () => {
                     />
 
                     <CommonDropdown
-                      label="Relation"
+                      label={i18n.t('relation')}
                       value={item.relation}
                       setValue={callback => {
                         // callback can be function or object
@@ -455,15 +459,15 @@ const EditFamilyDetails = () => {
                         }));
                       }}
                       items={[
-                        { label: 'Spouse', value: 'spouse' },
-                        { label: 'Parent', value: 'parent' },
-                        { label: 'Child', value: 'child' },
-                        { label: 'Sibling', value: 'sibling' },
-                        { label: 'Grandparent', value: 'grandparent' },
-                        { label: 'Friend', value: 'friend' },
-                        { label: 'Caregiver', value: 'caregiver' },
+                        { label: i18n.t('spouse'), value: 'spouse' },
+                        { label: i18n.t('parent'), value: 'parent' },
+                        { label: i18n.t('child'), value: 'child' },
+                        { label: i18n.t('sibling'), value: 'sibling' },
+                        { label: i18n.t('grandparent'), value: 'grandparent' },
+                        { label: i18n.t('friend'), value: 'friend' },
+                        { label: i18n.t('caregiver'), value: 'caregiver' },
                       ]}
-                      placeholder="Select relation"
+                      placeholder={i18n.t('selectRelation')}
                       error={errors[item.id]?.relation}
                     />
                   </View>
@@ -476,18 +480,18 @@ const EditFamilyDetails = () => {
                     style={styles.addMemberBtn}
                   >
                     <Text style={{ color: COLORS.cyanGreen }}>
-                      + Add Family Member
+                      + {i18n.t('addFamilyMember')}
                     </Text>
                   </TouchableOpacity>
                 )}
 
                 {/* Continue button */}
                 <GradientButton
-                  title="Save Changes"
+                  title={i18n.t('saveChanges')}
                   onPress={() => {
                     if (validateMembers()) {
                       console.log('Family Members:', members);
-                      navigation.goBack()
+                      navigation.goBack();
                     }
                   }}
                   style={{ marginBottom: RFValue(12) }}
