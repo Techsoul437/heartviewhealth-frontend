@@ -189,7 +189,7 @@ const SettingScreen = () => {
             >
               {i18n.t('about')}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('PrivacyPolicy')}>
               <Text style={[styles.profileText, { color: theme.text }]}>
                 {i18n.t('privacyPolicy')}
               </Text>
@@ -200,7 +200,7 @@ const SettingScreen = () => {
                 { borderTopColor: theme.inputBorder },
               ]}
             />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('TermsOfService')}>
               <Text style={[styles.profileText, { color: theme.text }]}>
                 {i18n.t('termsOfService')}
               </Text>
@@ -211,7 +211,7 @@ const SettingScreen = () => {
                 { borderTopColor: theme.inputBorder },
               ]}
             />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('SupportScreen')}>
               <Text style={[styles.profileText, { color: theme.text }]}>
                 {i18n.t('helpSupport')}
               </Text>

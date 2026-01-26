@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  Platform,
 } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -18,7 +19,6 @@ import CommonDatePickerInput from '../../components/CommonDatePickerInput';
 import CommonRadioGroup from '../../components/CommonRadioGroup';
 import CommonDropdown from '../../components/CommonDropdown';
 import GradientButton from '../../components/GradientButton';
-import { COLORS } from '../../constants/Colour';
 import ImagesPath from '../../constants/ImagesPath';
 import { LanguageContext } from '../../constants/LanguageContext';
 import i18n from '../../assets/i18n';

@@ -37,6 +37,7 @@ export default {
   reminder: require('../assets/image/reminder.png'),
   darkMode: require('../assets/image/darkMode.png'),
   lightMode: require('../assets/image/lightMode.png'),
+  noInternet: require('../assets/image/noInternet.png'),
 
   //Videos
   splashVideo: require('../assets/video/SplashVideo.mp4'),

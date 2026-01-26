@@ -152,5 +152,114 @@
   "member": "Member",
   "selectRelation": "Select relation",
   "addFamilyMember": "Add Family Member",
-  "save": "Save"
+  "save": "Save",
+  "privacy_policy": "Privacy Policy",
+  "introduction": "Introduction",
+  "privacy_policy_subtitle": "Your data, your privacy.",
+  "privacy_intro_desc": "HeartView (\"we\", \"our\", or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal and health-related information when you use our mobile application.",
+
+  "data_collection": "Information We Collect",
+  "data_collection_desc": "We collect personal information such as name, date of birth, gender, phone number, email address, emergency contact details, and family member information. We also collect health data including heart rate, ECG readings, blood pressure, blood sugar levels, BMI, medical history, and medication information.",
+
+  "device_information": "Device Information",
+  "device_information_desc": "We may collect device-related information such as device model, operating system, unique identifiers, connected ECG device details, mobile network information, and location data with your permission.",
+
+  "data_usage": "How We Use Your Information",
+  "data_usage_desc": "Your information is used to provide cardiac monitoring services, detect abnormal heart rhythms, send medication reminders and health alerts, generate health reports, contact emergency contacts during critical situations, and improve our services.",
+
+  "data_security": "Data Security",
+  "data_security_desc": "We use industry-standard security measures such as encryption, secure authentication, access controls, and regular security audits to protect your personal and health data. However, no method of data transmission is completely secure.",
+
+  "data_sharing": "Data Sharing and Disclosure",
+  "data_sharing_desc": "We do not sell your personal information. Your data may be shared with healthcare providers (with your consent), emergency contacts during critical alerts, trusted service providers, or legal authorities when required by law.",
+
+  "data_retention": "Data Retention",
+  "data_retention_desc": "We retain your information for as long as your account is active or as required to provide our services and comply with legal and medical record retention requirements.",
+
+  "children_privacy": "Children’s Privacy",
+  "children_privacy_desc": "HeartView is not intended for use by children under the age of 13. We do not knowingly collect personal information from children.",
+
+  "user_rights": "Your Rights",
+  "user_rights_desc": "You have the right to access, update, export, or delete your personal and health information, manage app permissions, and opt out of non-essential communications.",
+
+  "contact_us": "Contact Us",
+  "contact_us_desc": "If you have any questions regarding this Privacy Policy, please contact us at:",
+
+  "terms_of_service": "Terms of Service",
+  "terms_subtitle": "Please read carefully before using the app.",
+
+  "terms_intro": "Please read these Terms of Service (\"Terms\", \"Terms of Service\") carefully before using the HeartView mobile application (the \"Service\") operated by HeartView Inc. (\"us\", \"we\", or \"our\"). Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. By accessing or using the Service you agree to be bound by these Terms.",
+
+  "acceptance_of_terms": "Acceptance of Terms",
+  "acceptance_of_terms_desc": "By creating an account and using HeartView, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please do not use our Service.",
+
+  "medical_disclaimer": "Medical Disclaimer",
+  "medical_disclaimer_desc": "HeartView is a monitoring and tracking tool and is NOT a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider for medical decisions. Never disregard professional medical advice or delay seeking it based on HeartView data.",
+
+  "user_accounts": "User Accounts",
+  "user_accounts_desc": "To use certain features, you must create an account. Provide accurate information, maintain account security, accept responsibility for all activities under your account, and be at least 18 years old.",
+
+  "acceptable_use": "Acceptable Use",
+  "acceptable_use_desc": "You agree to use HeartView only for lawful purposes. You shall NOT misuse the Service, share credentials, attempt unauthorized access, disrupt servers, transmit malicious software, misrepresent identity, or use for unauthorized commercial purposes.",
+
+  "health_data_privacy": "Health Data and Privacy",
+  "health_data_privacy_desc": "By using HeartView, you consent to the collection, use, and sharing of your health information as described in our Privacy Policy. Emergency contacts may be notified if critical health alerts are detected. You can request access to or deletion of your data at any time.",
+
+  "ecg_integration": "ECG Device Integration",
+  "ecg_integration_desc": "HeartView may integrate with ECG devices. Device accuracy depends on proper usage and calibration. Device readings should be verified by healthcare professionals. We are not responsible for third-party device malfunctions.",
+
+  "intellectual_property": "Intellectual Property",
+  "intellectual_property_desc": "All content, features, and functionality of the Service are owned by HeartView Inc. and protected by copyright, trademark, and other intellectual property laws.",
+
+  "limitation_liability": "Limitation of Liability",
+  "limitation_liability_desc": "To the maximum extent permitted by law, HeartView shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, revenues, data, use, goodwill, or other intangible losses resulting from your use of the Service.",
+
+  "service_modifications": "Service Modifications",
+  "service_modifications_desc": "We may modify or discontinue the Service at any time, with or without notice. We shall not be liable for any modification, suspension, or discontinuance of the Service.",
+
+  "termination": "Termination",
+  "termination_desc": "We may terminate or suspend your account immediately for any reason, including breach of these Terms or legal requirements. Upon termination, your right to use the Service will cease immediately.",
+
+  "governing_law": "Governing Law",
+  "governing_law_desc": "These Terms are governed by and construed in accordance with the laws of the State of California, United States.",
+
+  "changes_to_terms": "Changes to Terms",
+  "changes_to_terms_desc": "We may update these Terms at any time. Continued use of the Service after changes constitutes acceptance of the new Terms.",
+
+  "support_title": "Support",
+  "support_subtitle": "We're here to help",
+  "contact_us": "Contact Us",
+  "contact_email": "Email",
+  "contact_phone": "Phone",
+  "support_hours": "Support Hours",
+  "live_chat": "Live Chat",
+  "phone_support": "Phone Support",
+  "email_response": "Email Response",
+  "medical_emergency": "Medical Emergency?",
+  "faq": "Frequently Asked Questions",
+  "faq_connect_ecg": "How do I connect my ECG device?",
+  "faq_critical_alert": "What should I do if I receive a critical alert?",
+  "faq_log_health_signals": "How often should I log my health signals?",
+  "faq_share_data_doctor": "Can I share my health data with my doctor?",
+  "faq_add_edit_family": "How do I add or edit family members?",
+  "faq_risk_levels": "What do the risk levels mean?",
+  "faq_medication_reminders": "How do medication reminders work?",
+  "faq_data_secure": "Is my health data secure?",
+  "faq_use_offline": "Can I use HeartView offline?",
+  "faq_delete_account": "How do I delete my account?",
+  "app_version": "App Version",
+  "faq_connect_ecg_ans": "Go to the ECG tab, tap 'Pair Device', enable Bluetooth on your phone, and follow the on-screen instructions. Make sure your ECG device is in pairing mode and nearby.",
+  "faq_critical_alert_ans": "Critical alerts indicate potentially serious heart rhythm abnormalities. Stay calm, sit down, and call emergency services immediately. Your emergency contacts will be automatically notified.",
+  "faq_log_health_signals_ans": "We recommend logging vital signs like blood pressure and blood sugar at least once daily, preferably at the same time. Weight can be tracked weekly. Follow your doctor's recommendations for your specific condition.",
+  "faq_share_data_doctor_ans": "Yes! You can export your health reports from the Health tab. Tap on any health signal, then tap 'Export Data' to generate a PDF report that you can share with your healthcare provider.",
+  "faq_add_edit_family_ans": "Go to Settings > Family Members. You can add up to 3 family members. Tap on any member to edit their information or remove them from your profile.",
+  "faq_risk_levels_ans": "Risk levels are calculated based on your health data: Normal (green) indicates healthy readings, Moderate (yellow) suggests monitoring needed, and High (red) requires immediate medical attention.",
+  "faq_medication_reminders_ans": "Set up reminders in the Reminders tab. You'll receive notifications at scheduled times. Mark medications as taken to track adherence. You can also set reminders for appointments and health checks.",
+  "faq_data_secure_ans": "Yes. We use end-to-end encryption to protect your data. All information is stored securely and complies with HIPAA regulations. We never share your data without your explicit consent.",
+  "faq_use_offline_ans": "Yes, basic features work offline. Your data will sync automatically when you reconnect to the internet. However, ECG device pairing and real-time alerts require an internet connection.",
+  "faq_delete_account_ans": "Go to Settings, scroll down, and tap 'Delete Account'. This will permanently remove all your data. This action cannot be undone, so make sure to export any data you want to keep first.",
+  "medical_emergency_msg": "If you're experiencing a medical emergency, please call emergency services immediately (911 in the US). Do not wait for support from our team.",
+  "noInternetTitle": "No Internet Connection",
+  "noInternetSubtitle": "Please check your connection and try again.",
+  "retryButton": "Retry"
 }

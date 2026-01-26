@@ -18,13 +18,17 @@ import AddDoctorAppointment from '../screens/reminders/AddDoctorAppointment'
 import EditProfile from '../screens/settings/EditProfile'
 import EditHealthProfile from '../screens/settings/EditHealthProfile'
 import EditFamilyDetails from '../screens/settings/EditFamilyDetails'
+import PrivacyPolicy from '../screens/settings/PrivacyPolicy'
+import TermsOfService from '../screens/settings/TermsOfService'
+import SupportScreen from '../screens/settings/SupportScreen'
+import NoInternetScreen from '../screens/NoInternetScreen'
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Main"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -45,6 +49,10 @@ const RootNavigator = () => {
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="EditHealthProfile" component={EditHealthProfile} />
       <Stack.Screen name="EditFamilyDetails" component={EditFamilyDetails} />
+      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Stack.Screen name="TermsOfService" component={TermsOfService} />
+      <Stack.Screen name="SupportScreen" component={SupportScreen} />
+      <Stack.Screen name="NoInternetScreen" component={NoInternetScreen} />
     </Stack.Navigator>
   );
 };
